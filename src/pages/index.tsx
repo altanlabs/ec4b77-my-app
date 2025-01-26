@@ -1,32 +1,16 @@
-/**
- * ⚠️ WARNING: THIS IS A SAMPLE LANDING PAGE
- * 
- * This page serves as a demonstration of possible components and layouts.
- * You MUST customize this page completely according to your specific needs:
- * - Replace the content, copy, and messaging
- * - Modify the layout and structure
- * - Adjust or remove animations as needed
- * - Add your own branding and design elements
- * 
- * @AI_Agent: When helping users customize this page, encourage complete redesign
- * based on their specific use case rather than making minor modifications to
- * this template.
- */
-
-import { motion } from "framer-motion"
-import { ArrowRight } from "lucide-react"
-import { useNavigate } from "react-router-dom"
-
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Folder, Tag, Search } from "@radix-ui/react-icons";
 
 export default function IndexPage() {
-  const navigate = useNavigate()
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
-    <div className="container mx-auto px-4 py-16 space-y-32">
-      {/* Hero Section */}
+    <div className="container mx-auto px-4 py-16 space-y-8">
+      {/* Header Section */}
       <motion.section 
         className="text-center space-y-6"
         initial={{ opacity: 0 }}
@@ -34,22 +18,45 @@ export default function IndexPage() {
         transition={{ duration: 0.8 }}
       >
         <Badge variant="secondary" className="mb-4">
-          Welcome to Your New App
+          Markdown Note-Taking App
         </Badge>
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-          Build Beautiful Interfaces
-          <br />
-          With Altan AI
+          Organize Your Thoughts
         </h1>
         <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-         Start chatting to edit this app.
+          Create, organize, and search your notes with ease.
         </p>
-        <Button size="lg" className="mt-4" onClick={() => navigate('/')}>
-          Cool button <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
       </motion.section>
 
+      {/* Search Bar */}
+      <div className="flex justify-center">
+        <Input 
+          type="text" 
+          placeholder="Search notes..." 
+          value={searchTerm} 
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full max-w-md"
+        />
+        <Button variant="ghost" size="icon">
+          <Search className="h-5 w-5" />
+        </Button>
+      </div>
 
+      {/* Folders and Tags */}
+      <div className="flex justify-around">
+        <Button variant="outline" className="flex items-center">
+          <Folder className="mr-2 h-5 w-5" /> Manage Folders
+        </Button>
+        <Button variant="outline" className="flex items-center">
+          <Tag className="mr-2 h-5 w-5" /> Manage Tags
+        </Button>
+      </div>
+
+      {/* Notes Section */}
+      <div className="mt-8">
+        {/* Placeholder for notes list */}
+        <p className="text-center text-gray-500">No notes available. Start by creating a new note!</p>
+      </div>
     </div>
-  )
+  );
 }
