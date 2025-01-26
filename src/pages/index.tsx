@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Folder, Tag, Search } from "@radix-ui/react-icons";
+import { FolderIcon, TagIcon, SearchIcon } from "lucide-react";
 
 export default function IndexPage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -38,17 +38,17 @@ export default function IndexPage() {
           className="w-full max-w-md"
         />
         <Button variant="ghost" size="icon">
-          <Search className="h-5 w-5" />
+          <SearchIcon className="h-5 w-5" />
         </Button>
       </div>
 
       {/* Folders and Tags */}
       <div className="flex justify-around">
         <Button variant="outline" className="flex items-center">
-          <Folder className="mr-2 h-5 w-5" /> Manage Folders
+          <FolderIcon className="mr-2 h-5 w-5" /> Manage Folders
         </Button>
         <Button variant="outline" className="flex items-center">
-          <Tag className="mr-2 h-5 w-5" /> Manage Tags
+          <TagIcon className="mr-2 h-5 w-5" /> Manage Tags
         </Button>
       </div>
 
